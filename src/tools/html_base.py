@@ -29,7 +29,7 @@ HEADER = """
 FOOTER = """
     <div class="footer">
         <div class="footer-content">
-            <p>Agenda des journées mondiales, internationales et bien d'autres. Inclus aussi quelques dates et événements liés au stream francophone.</p>
+            <p>Agenda des journées mondiales, internationales et bien d'autres. Le calendrier comprend aussi quelques dates et événements liés au stream francophone.</p>
         </div>
         <div class="footer-content">
             <p>Créé par <a class="footer-link" href="https://twitter.com/babiilabilux">Babi'</a> avec la Pire Commu.</p>
