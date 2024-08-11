@@ -38,6 +38,9 @@ FOOTER = f"""
         <div class="footer-content">
             <p>Créé par <a class="footer-link" href="https://twitter.com/babiilabilux">Babi'</a> avec la Pire Commu.</p>
         </div>
+        <div class="footer-content">
+            <p>Le site est encore en plein développement et je ne suis pas dev' web donc il y a pas mal de soucis à régler. Tout retour ou aide sont les bienvenus</p>
+        </div>
     </div>
 </body>
 </html>"""
@@ -53,7 +56,7 @@ CARDS_CONTAINER = f"""
 </div>"""
 
 CARD = f"""
-<div class="card" onclick="onclick="window.open('{root}/events/{{}}', '_self')">
+<div class="card" onclick="window.open('{root}/events/{{}}', '_self')">
     <div class="card-header">
         <div class="card-title">{{}}</div>
         <div class="card-header-right">
