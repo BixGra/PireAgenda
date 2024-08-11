@@ -126,12 +126,12 @@ FILTER_DATE = f"""
         <label for="day"></label>
         <select class="filter-item-child" id="day">
         </select>
-        <script src="{root}/src/script/selector.js"></script>
     </div>
     <div class="filter-item">
         <label for="search"></label>
         <button class="filter-item-child" id="search" root="{root}" onclick="window.open('{root}/date/01/01', '_self')">Chercher</button>
     </div>
+    <script src="{root}/src/script/selector.js"></script>
 </div>"""
 
 FILTER_CATEGORY = f"""
