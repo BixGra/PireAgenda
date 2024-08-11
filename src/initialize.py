@@ -9,7 +9,7 @@ con = sl.connect(f"./src/data/pireagenda.db")
 # Journees
 with con:
     con.execute("""
-            DROP TABLE AGENDA;
+            DROP TABLE IF EXISTS AGENDA;
         """)
     con.execute("""
         CREATE TABLE IF NOT EXISTS AGENDA (
