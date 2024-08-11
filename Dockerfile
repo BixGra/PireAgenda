@@ -12,6 +12,8 @@ ENV PATH /opt/conda/envs/env/bin:$PATH
 
 ENV PROJECT_PATH /etc/PireAgenda/src/
 
+ENV PIREAGENDAPROD True
+
 RUN python src/initialize.py
 
 EXPOSE 8003

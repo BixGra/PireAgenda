@@ -1,6 +1,7 @@
 const monthSelect = document.getElementById('month');
 const daySelect = document.getElementById('day');
 const searchButton = document.getElementById('search');
+const root = document.getElementById('search')?.getAttribute('root') || "";
 
 // Function to populate days based on selected month
 function populateDays(month) {
@@ -18,13 +19,13 @@ function populateDays(month) {
 monthSelect.addEventListener('change', () => {
   const selectedMonth = monthSelect.value;
   populateDays(selectedMonth);
-  document.getElementById('search').setAttribute( "onClick", "window.open('/date/" + monthSelect.value.padStart(2, "0") + "/" + daySelect.value.padStart(2, "0") + "', '_self')" );
+  document.getElementById('search').setAttribute( "onClick", "window.open('" + root +"/date/" + monthSelect.value.padStart(2, "0") + "/" + daySelect.value.padStart(2, "0") + "', '_self')" );
 });
 
 // Event listener for day change
 daySelect.addEventListener('change', () => {
   const selectedDay = daySelect.value;
-  document.getElementById('search').setAttribute( "onClick", "window.open('/date/" + monthSelect.value.padStart(2, "0") + "/" + daySelect.value.padStart(2, "0") + "', '_self')" );
+  document.getElementById('search').setAttribute( "onClick", "window.open('" + root +"/date/" + monthSelect.value.padStart(2, "0") + "/" + daySelect.value.padStart(2, "0") + "', '_self')" );
 });
 
 // Initial population of days

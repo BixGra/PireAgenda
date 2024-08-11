@@ -1,15 +1,19 @@
-HEADER = """
+import os
+
+root = "/pireagenda" if "PIREAGENDAPROD" in os.environ else ""
+
+HEADER = f"""
 <!doctype html>
 <html>
 <head>
     <title>Pire Agenda</title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-    <link href="/src/style/style.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="{root}/src/style/style.css" media="screen" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="header">
-        <div class="header-left" onclick="window.open('/today', '_self')">
+        <div class="header-left" onclick="window.open('{root}/today', '_self')">
             <div class="header-title">
                 Pire Agenda
             </div>
@@ -18,15 +22,15 @@ HEADER = """
             <label for="toggle">☰</label>
             <input type="checkbox" id="toggle">
             <div class="main_pages">
-                <a href="/filter/date">Par date</a>
-                <a href="/filter/categorie">Par catégorie</a>
+                <a href="{root}/filter/date">Par date</a>
+                <a href="{root}/filter/categorie">Par catégorie</a>
             </div>
         </nav>
     </div>"""
 
 # TODO : add by-title filter
 
-FOOTER = """
+FOOTER = f"""
     <div class="footer">
         <div class="footer-content">
             <p>Agenda des journées mondiales, internationales et bien d'autres. Le calendrier comprend aussi quelques dates et événements liés au stream francophone.</p>
@@ -38,56 +42,56 @@ FOOTER = """
 </body>
 </html>"""
 
-CARDS_CONTAINER = """
-<div class="cards-container {}">
+CARDS_CONTAINER = f"""
+<div class="cards-container {{}}">
     <div class="cards-container-left">
         <div class="cards-container-label">
-            <p>{}</p>
+            <p>{{}}</p>
         </div>
     </div>
-    <div class="cards">{}</div>
+    <div class="cards">{{}}</div>
 </div>"""
 
-CARD = """
-<div class="card" onclick="onclick="window.open('/events/{}', '_self')">
+CARD = f"""
+<div class="card" onclick="onclick="window.open('{root}/events/{{}}', '_self')">
     <div class="card-header">
-        <div class="card-title">{}</div>
+        <div class="card-title">{{}}</div>
         <div class="card-header-right">
-            <img class="card-image" src="/src/img/{}.png">
+            <img class="card-image" src="{root}/src/img/{{}}.png">
             <div class="card-date">
-                <p>{}</p>
+                <p>{{}}</p>
             </div>
         </div>
     </div>
     <div class="card-text">
-        <p>{}</p>
+        <p>{{}}</p>
     </div>
 </div>"""
 
-SINGLE_CARD = """
+SINGLE_CARD = f"""
 <div class="card single-card" style="cursor: default;">
     <div class="card-header">
-        <div class="card-title">{}</div>
+        <div class="card-title">{{}}</div>
         <div class="card-header-right">
-            <img class="card-image" src="/src/img/{}.png">
+            <img class="card-image" src="{root}/src/img/{{}}.png">
             <div class="card-date">
-                <p>{}</p>
+                <p>{{}}</p>
             </div>
         </div>
     </div>
     <div class="card-text">
-        <p>{}</p>
+        <p>{{}}</p>
     </div>
 </div>"""
 
-NO_CARD = """
+NO_CARD = f"""
 <div class="card" style="cursor: default;">
     <div class="card-header">
         <div class="card-title">Pas d'événement ce jour là</div>
         <div class="card-header-right">
-            <img class="card-image" src="/src/img/tmp.png">
+            <img class="card-image" src="{root}/src/img/tmp.png">
             <div class="card-date">
-                <p>{}</p>
+                <p>{{}}</p>
             </div>
         </div>
     </div>
@@ -96,7 +100,7 @@ NO_CARD = """
     </div>
 </div>"""
 
-FILTER_DATE = """
+FILTER_DATE = f"""
 <div class="filter">
     <div class="filter-item">
         <div class="filter-item-child" id="title">
@@ -122,72 +126,78 @@ FILTER_DATE = """
         <label for="day"></label>
         <select class="filter-item-child" id="day">
         </select>
-        <script src="/src/script/selector.js"></script>
+        <script src="{root}/src/script/selector.js"></script>
     </div>
     <div class="filter-item">
         <label for="search"></label>
-        <button class="filter-item-child" id="search" onclick="window.open('/date/01/01', '_self')">Chercher</button>
+        <button class="filter-item-child" id="search" root="{root}" onclick="window.open('{root}/date/01/01', '_self')">Chercher</button>
     </div>
 </div>"""
 
-FILTER_CATEGORY = """
+FILTER_CATEGORY = f"""
 <div class="filter">
     <div class="filter-item">
-        <div class="filter-item-child category" onclick="window.open('/categorie/angledroit', '_self')">
+        <div class="filter-item-child category" onclick="window.open('{root}/categorie/angledroit', '_self')">
             <p>AngleDroit</p>
         </div>
-        <div class="filter-item-child category" onclick="window.open('/categorie/art', '_self')">
+        <div class="filter-item-child category" onclick="window.open('{root}/categorie/art', '_self')">
             <p>Art</p>
         </div>
-        <div class="filter-item-child category" onclick="window.open('/categorie/cinema', '_self')">
+        <div class="filter-item-child category" onclick="window.open('{root}/categorie/cinema', '_self')">
             <p>Cinéma</p>
         </div>
-        <div class="filter-item-child category" onclick="window.open('/categorie/divers', '_self')">
+        <div class="filter-item-child category" onclick="window.open('{root}/categorie/divers', '_self')">
             <p>Divers</p>
         </div>
-        <div class="filter-item-child category" onclick="window.open('/categorie/environnement', '_self')">
+        <div class="filter-item-child category" onclick="window.open('{root}/categorie/education', '_self')">
+            <p>Education</p>
+        </div>
+        <div class="filter-item-child category" onclick="window.open('{root}/categorie/environnement', '_self')">
             <p>Environnement</p>
         </div>
-        <div class="filter-item-child category" onclick="window.open('/categorie/feminisme', '_self')">
+        <div class="filter-item-child category" onclick="window.open('{root}/categorie/feminisme', '_self')">
             <p>Féminisme</p>
         </div>
-        <div class="filter-item-child category" onclick="window.open('/categorie/gastronomie', '_self')">
+        <div class="filter-item-child category" onclick="window.open('{root}/categorie/gastronomie', '_self')">
             <p>Gastronomie</p>
         </div>
-        <div class="filter-item-child category" onclick="window.open('/categorie/geographie', '_self')">
+        <div class="filter-item-child category" onclick="window.open('{root}/categorie/geographie', '_self')">
             <p>Géographie</p>
         </div>
-        <div class="filter-item-child category" onclick="window.open('/categorie/histoire', '_self')">
+        <div class="filter-item-child category" onclick="window.open('{root}/categorie/histoire', '_self')">
             <p>Histoire</p>
         </div>
-        <div class="filter-item-child category" onclick="window.open('/categorie/internet', '_self')">
+        <div class="filter-item-child category" onclick="window.open('{root}/categorie/internet', '_self')">
             <p>Internet</p>
         </div>
-        <div class="filter-item-child category" onclick="window.open('/categorie/jeux', '_self')">
+        <div class="filter-item-child category" onclick="window.open('{root}/categorie/jeux', '_self')">
             <p>Jeux</p>
         </div>
-        <div class="filter-item-child category" onclick="window.open('/categorie/langues', '_self')">
+        <div class="filter-item-child category" onclick="window.open('{root}/categorie/langues', '_self')">
             <p>Langues</p>
         </div>
-        <div class="filter-item-child category" onclick="window.open('/categorie/litterature', '_self')">
+        <div class="filter-item-child category" onclick="window.open('{root}/categorie/litterature', '_self')">
             <p>Littérature</p>
         </div>
-        <div class="filter-item-child category" onclick="window.open('/categorie/musique', '_self')">
+        <div class="filter-item-child category" onclick="window.open('{root}/categorie/media', '_self')">
+            <p>Média</p>
+        </div>
+        <div class="filter-item-child category" onclick="window.open('{root}/categorie/musique', '_self')">
             <p>Musique</p>
         </div>
-        <div class="filter-item-child category" onclick="window.open('/categorie/nature', '_self')">
+        <div class="filter-item-child category" onclick="window.open('{root}/categorie/nature', '_self')">
             <p>Nature</p>
         </div>
-        <div class="filter-item-child category" onclick="window.open('/categorie/sante', '_self')">
+        <div class="filter-item-child category" onclick="window.open('{root}/categorie/sante', '_self')">
             <p>Santé</p>
         </div>
-        <div class="filter-item-child category" onclick="window.open('/categorie/sciences', '_self')">
+        <div class="filter-item-child category" onclick="window.open('{root}/categorie/sciences', '_self')">
             <p>Sciences</p>
         </div>
-        <div class="filter-item-child category" onclick="window.open('/categorie/societe', '_self')">
+        <div class="filter-item-child category" onclick="window.open('{root}/categorie/societe', '_self')">
             <p>Société</p>
         </div>
-        <div class="filter-item-child category" onclick="window.open('/categorie/sports', '_self')">
+        <div class="filter-item-child category" onclick="window.open('{root}/categorie/sports', '_self')">
             <p>Sports</p>
         </div>
     </div>
