@@ -140,28 +140,52 @@ FILTER_CATEGORY = """
             <p>Art</p>
         </div>
         <div class="filter-item-child category" onclick="window.open('/categorie/cinema', '_self')">
-            <p>Cinema</p>
+            <p>Cinéma</p>
         </div>
         <div class="filter-item-child category" onclick="window.open('/categorie/divers', '_self')">
             <p>Divers</p>
         </div>
+        <div class="filter-item-child category" onclick="window.open('/categorie/environnement', '_self')">
+            <p>Environnement</p>
+        </div>
+        <div class="filter-item-child category" onclick="window.open('/categorie/feminisme', '_self')">
+            <p>Féminisme</p>
+        </div>
+        <div class="filter-item-child category" onclick="window.open('/categorie/gastronomie', '_self')">
+            <p>Gastronomie</p>
+        </div>
         <div class="filter-item-child category" onclick="window.open('/categorie/geographie', '_self')">
-            <p>Geographie</p>
+            <p>Géographie</p>
         </div>
         <div class="filter-item-child category" onclick="window.open('/categorie/histoire', '_self')">
             <p>Histoire</p>
         </div>
+        <div class="filter-item-child category" onclick="window.open('/categorie/internet', '_self')">
+            <p>Internet</p>
+        </div>
         <div class="filter-item-child category" onclick="window.open('/categorie/jeux', '_self')">
             <p>Jeux</p>
         </div>
-        <div class="filter-item-child category" onclick="window.open('/categorie/Langues', '_self')">
+        <div class="filter-item-child category" onclick="window.open('/categorie/langues', '_self')">
             <p>Langues</p>
+        </div>
+        <div class="filter-item-child category" onclick="window.open('/categorie/litterature', '_self')">
+            <p>Littérature</p>
         </div>
         <div class="filter-item-child category" onclick="window.open('/categorie/musique', '_self')">
             <p>Musique</p>
         </div>
+        <div class="filter-item-child category" onclick="window.open('/categorie/nature', '_self')">
+            <p>Nature</p>
+        </div>
+        <div class="filter-item-child category" onclick="window.open('/categorie/sante', '_self')">
+            <p>Santé</p>
+        </div>
         <div class="filter-item-child category" onclick="window.open('/categorie/sciences', '_self')">
             <p>Sciences</p>
+        </div>
+        <div class="filter-item-child category" onclick="window.open('/categorie/societe', '_self')">
+            <p>Société</p>
         </div>
         <div class="filter-item-child category" onclick="window.open('/categorie/sports', '_self')">
             <p>Sports</p>

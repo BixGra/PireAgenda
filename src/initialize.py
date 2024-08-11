@@ -9,6 +9,9 @@ con = sl.connect(f"./src/data/pireagenda.db")
 # Journees
 with con:
     con.execute("""
+            DROP TABLE AGENDA;
+        """)
+    con.execute("""
         CREATE TABLE IF NOT EXISTS AGENDA (
             id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
             date TEXT,
