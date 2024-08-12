@@ -35,8 +35,12 @@ def to_str(number: int) -> str:
     return str(number).rjust(2, '0')
 
 
-def date_to_str(date):
+def date_to_str(date: datetime.date) -> str:
     return f"{to_str(date.day)}/{to_str(date.month)}"
+
+
+def n_to_br(text: str) -> str:
+    return text.replace("\n", "<br>")
 
 
 def get_events_by_date(date: str) -> list[dict]:
@@ -53,7 +57,7 @@ def get_events_by_category(category: str) -> list[dict]:
     with sl.connect(f"./src/data/pireagenda.db") as con:
         cur = con.cursor()
         cur.execute(f"""
-            SELECT * FROM AGENDA WHERE category = '{category}';
+            SELECT * FROM AGENDA WHERE category = '{category}' ORDER BY date DESC;
         """)
         events = cur.fetchall()
         return list(map(lambda x: dict(zip(LABELS, x)), events))
@@ -63,18 +67,18 @@ def get_event_by_id(event_id: int) -> dict:
     with sl.connect(f"./src/data/pireagenda.db") as con:
         cur = con.cursor()
         cur.execute(f"""
-            SELECT * FROM AGENDA WHERE id = '{event_id}';
+            SELECT * FROM AGENDA WHERE id = '{event_id}' LIMIT 1;
         """)
         event = cur.fetchall()
         return dict(zip(LABELS, event.pop()))
 
 
 def event_to_card(event: dict) -> str:
-    return CARD.format(event["id"], event["title"], "tmp", event["day"], event["description"])
+    return CARD.format(event["id"], event["title"], "tmp", event["day"], n_to_br(event["description"]))
 
 
 def event_to_single_card(event: dict) -> str:
-    return SINGLE_CARD.format(event["title"], "tmp", event["day"], event["description"])
+    return SINGLE_CARD.format(event["title"], "tmp", event["day"], n_to_br(event["description"]))
 
 
 def no_event_card(date) -> str:

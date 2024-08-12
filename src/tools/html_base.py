@@ -36,10 +36,10 @@ FOOTER = f"""
             <p>Agenda des journées mondiales, internationales et bien d'autres. Le calendrier comprend aussi quelques dates et événements liés au stream francophone.</p>
         </div>
         <div class="footer-content">
-            <p>Créé par <a class="footer-link" href="https://twitter.com/babiilabilux">Babi'</a> avec la Pire Commu.</p>
+            <p>Le site est encore en <a class="footer-link" href="https://github.com/BixGra/PireAgenda" target="_blank">plein développement (repo GitHub)</a> et je ne suis pas dev' web donc il y a pas mal de soucis à régler. Tout retour ou aide sont les bienvenus !</p>
         </div>
         <div class="footer-content">
-            <p>Le site est encore en plein développement et je ne suis pas dev' web donc il y a pas mal de soucis à régler. Tout retour ou aide sont les bienvenus</p>
+            <p>Créé par <a class="footer-link" href="https://twitter.com/babiilabilux" target="_blank">Babi'</a> avec la Pire Commu.</p>
         </div>
     </div>
 </body>

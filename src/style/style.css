@@ -157,7 +157,12 @@ label, #toggle {
 }
 
 .card-title {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     padding: 10px;
+    margin: 10px;
 
     flex: 1;
 
@@ -200,6 +205,13 @@ label, #toggle {
 .single-card {
     max-height: none;
 }
+.single-card>.card-header {
+    height: unset;
+}
+
+.single-card>.card-header>.card-title {
+    display: block;
+}
 
 .single-card>.card-text>p {
     display: block;
@@ -215,6 +227,11 @@ label, #toggle {
 }
 
 .filter-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 500px;
 }
 
 .filter-item-child {
@@ -252,6 +269,7 @@ label, #toggle {
 
 #search {
     width: 370px;
+    max-width: 370px;
 }
 
 .category {
@@ -333,8 +351,21 @@ label, #toggle {
         display: flex;
     }
 
+    .card-header {
+        height: unset;
+    }
+
     .card-title {
         overflow: hidden;
-        font-size: 20px;
+        display: block;
+        font-size: 24px;
+    }
+
+    .filter-item {
+        width: 80%;
+    }
+
+    #title, #search {
+        width: 100%;
     }
 }
