@@ -1,6 +1,32 @@
 import os
+from enum import Enum
 
 root = "/pireagenda" if "PIREAGENDAPROD" in os.environ else ""
+
+
+class CATEGORIES(Enum):
+    angledroit = "AngleDroit"
+    art = "Art"
+    cinema = "Cinéma"
+    divers = "Divers"
+    education = "Education"
+    environnement = "Environnement"
+    feminisme = "Féminisme"
+    gastronomie = "Gastronomie"
+    geographie = "Géographie"
+    histoire = "Histoire"
+    internet = "Internet"
+    jeux = "Jeux"
+    langues = "Langues"
+    litterature = "Littérature"
+    media = "Média"
+    musique = "Musique"
+    nature = "Nature"
+    sante = "Santé"
+    sciences = "Sciences"
+    societe = "Société"
+    sports = "Sports"
+
 
 HEADER = f"""
 <!doctype html>
@@ -8,6 +34,7 @@ HEADER = f"""
 <head>
     <title>Pire Agenda</title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="{root}/src/img/education.png">
     <link href="{root}/src/style/style.css" media="screen" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
 </head>
@@ -36,10 +63,10 @@ FOOTER = f"""
             <p>Agenda des journées mondiales, internationales et bien d'autres. Le calendrier comprend aussi quelques dates et événements liés au stream francophone.</p>
         </div>
         <div class="footer-content">
-            <p>Le site est encore en <a class="footer-link" href="https://github.com/BixGra/PireAgenda" target="_blank">plein développement (repo GitHub)</a> et je ne suis pas dev' web donc il y a pas mal de soucis à régler. Tout retour ou aide sont les bienvenus !</p>
+            <p>Le site est encore en <a class="footer-link" href="https://github.com/BixGra/PireAgenda" target="_blank">plein développement (repo GitHub)</a> et je ne suis pas dev' web donc il y a pas mal de soucis à régler. Tout retour ou aide sont les bienvenus <a class="footer-link" href="https://twitter.com/babiilabilux">par message</a> !</p>
         </div>
         <div class="footer-content">
-            <p>Créé par <a class="footer-link" href="https://twitter.com/babiilabilux" target="_blank">Babi'</a> avec la Pire Commu.</p>
+            <p>Images via <a class="footer-link" href="https://www.flaticon.com/free-icons/art" title="art icons">Freepik - Flaticon</a>.</p>
         </div>
     </div>
 </body>
@@ -88,7 +115,7 @@ SINGLE_CARD = f"""
 </div>"""
 
 NO_CARD = f"""
-<div class="card" style="cursor: default;">
+<div class="card single-card" style="cursor: default;">
     <div class="card-header">
         <div class="card-title">Pas d'événement ce jour là</div>
         <div class="card-header-right">
@@ -137,71 +164,20 @@ FILTER_DATE = f"""
     <script src="{root}/src/script/selector.js"></script>
 </div>"""
 
+
+SINGLE_CATEGORY = f"""
+<div class="filter-item-child category" onclick="window.open('{root}/categorie/{{}}', '_self')">
+    <div class="category-text">
+        <p>{{}}</p>
+    </div>
+    <div>
+        <img class="category-image" src="{root}/src/img/{{}}.png">
+    </div>
+</div>"""
+
 FILTER_CATEGORY = f"""
 <div class="filter">
     <div class="filter-item">
-        <div class="filter-item-child category" onclick="window.open('{root}/categorie/angledroit', '_self')">
-            <p>AngleDroit</p>
-        </div>
-        <div class="filter-item-child category" onclick="window.open('{root}/categorie/art', '_self')">
-            <p>Art</p>
-        </div>
-        <div class="filter-item-child category" onclick="window.open('{root}/categorie/cinema', '_self')">
-            <p>Cinéma</p>
-        </div>
-        <div class="filter-item-child category" onclick="window.open('{root}/categorie/divers', '_self')">
-            <p>Divers</p>
-        </div>
-        <div class="filter-item-child category" onclick="window.open('{root}/categorie/education', '_self')">
-            <p>Education</p>
-        </div>
-        <div class="filter-item-child category" onclick="window.open('{root}/categorie/environnement', '_self')">
-            <p>Environnement</p>
-        </div>
-        <div class="filter-item-child category" onclick="window.open('{root}/categorie/feminisme', '_self')">
-            <p>Féminisme</p>
-        </div>
-        <div class="filter-item-child category" onclick="window.open('{root}/categorie/gastronomie', '_self')">
-            <p>Gastronomie</p>
-        </div>
-        <div class="filter-item-child category" onclick="window.open('{root}/categorie/geographie', '_self')">
-            <p>Géographie</p>
-        </div>
-        <div class="filter-item-child category" onclick="window.open('{root}/categorie/histoire', '_self')">
-            <p>Histoire</p>
-        </div>
-        <div class="filter-item-child category" onclick="window.open('{root}/categorie/internet', '_self')">
-            <p>Internet</p>
-        </div>
-        <div class="filter-item-child category" onclick="window.open('{root}/categorie/jeux', '_self')">
-            <p>Jeux</p>
-        </div>
-        <div class="filter-item-child category" onclick="window.open('{root}/categorie/langues', '_self')">
-            <p>Langues</p>
-        </div>
-        <div class="filter-item-child category" onclick="window.open('{root}/categorie/litterature', '_self')">
-            <p>Littérature</p>
-        </div>
-        <div class="filter-item-child category" onclick="window.open('{root}/categorie/media', '_self')">
-            <p>Média</p>
-        </div>
-        <div class="filter-item-child category" onclick="window.open('{root}/categorie/musique', '_self')">
-            <p>Musique</p>
-        </div>
-        <div class="filter-item-child category" onclick="window.open('{root}/categorie/nature', '_self')">
-            <p>Nature</p>
-        </div>
-        <div class="filter-item-child category" onclick="window.open('{root}/categorie/sante', '_self')">
-            <p>Santé</p>
-        </div>
-        <div class="filter-item-child category" onclick="window.open('{root}/categorie/sciences', '_self')">
-            <p>Sciences</p>
-        </div>
-        <div class="filter-item-child category" onclick="window.open('{root}/categorie/societe', '_self')">
-            <p>Société</p>
-        </div>
-        <div class="filter-item-child category" onclick="window.open('{root}/categorie/sports', '_self')">
-            <p>Sports</p>
-        </div>
+        {"".join([SINGLE_CATEGORY.format(c.name, c.value, c.name) for c in CATEGORIES])}
     </div>
 </div>"""

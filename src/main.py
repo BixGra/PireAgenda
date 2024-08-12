@@ -22,7 +22,6 @@ app.add_middleware(
 @app.get("/")
 @app.get("/today")
 def get_method():
-    print(HTMLResponse(render_index()).body)
     return HTMLResponse(render_index())
 
 

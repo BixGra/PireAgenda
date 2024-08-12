@@ -130,9 +130,10 @@ label, #toggle {
     background: rgb(188,214,205);
     background: linear-gradient(135deg, rgba(188,214,205,1) 0%, rgba(99,159,139,1) 100%);
     border-radius: 25px;
+    transition: border-radius 0.3s;
 
     max-height: 500px;
-    margin: 10px;
+    margin: 20px;
     padding: 10px;
 
     display: flex;
@@ -140,8 +141,16 @@ label, #toggle {
     flex: 1 1 500px;
 }
 
-.card:hover {
+.card:not(.single-card):hover {
     cursor: pointer;
+    background: linear-gradient(135deg, rgba(210,244,158,1) 0%, rgba(99,159,139,1) 100%);
+    border-radius: 35px;
+    transition: border-radius 0.3s;
+
+    .card-image {
+        border-top-right-radius: 25px;
+        transition: border-top-right-radius 0.3s;
+    }
 }
 
 .card-header {
@@ -174,6 +183,7 @@ label, #toggle {
     height: 100px;
 
     border-radius: 15px;
+    transition: border-radius 0.3s;
 }
 
 .card-date {
@@ -274,14 +284,28 @@ label, #toggle {
 
 .category {
     width: 500px;
+
+    display: flex;
+    align-items: center;
 }
 
 .category:hover {
     cursor: pointer;
 }
 
-.category>p {
+.category-text {
+    flex: 1;
+}
+
+.category-text>p {
     text-align: center;
+}
+
+.category-image {
+    max-width: 80px;
+    max-height: 80px;
+
+    border-radius: 15px;
 }
 
 .footer {

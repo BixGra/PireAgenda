@@ -1,34 +1,9 @@
 import datetime
 import sqlite3 as sl
-from enum import Enum
 
 from src.tools.html_base import *
 
 LABELS = ["id", "day", "title", "description", "category"]
-
-
-class CATEGORIES(Enum):
-    angledroit = "AngleDroit"
-    art = "Art"
-    cinema = "Cinéma"
-    divers = "Divers"
-    education = "Education"
-    environnement = "Environnement"
-    feminisme = "Féminisme"
-    gastronomie = "Gastronomie"
-    geographie = "Géographie"
-    histoire = "Histoire"
-    internet = "Internet"
-    jeux = "Jeux"
-    langues = "Langues"
-    litterature = "Littérature"
-    media = "Média"
-    musique = "Musique"
-    nature = "Nature"
-    sante = "Santé"
-    sciences = "Sciences"
-    societe = "Société"
-    sports = "Sports"
 
 
 def to_str(number: int) -> str:
@@ -74,11 +49,11 @@ def get_event_by_id(event_id: int) -> dict:
 
 
 def event_to_card(event: dict) -> str:
-    return CARD.format(event["id"], event["title"], "tmp", event["day"], n_to_br(event["description"]))
+    return CARD.format(event["id"], event["title"], event["category"], event["day"], n_to_br(event["description"]))
 
 
 def event_to_single_card(event: dict) -> str:
-    return SINGLE_CARD.format(event["title"], "tmp", event["day"], n_to_br(event["description"]))
+    return SINGLE_CARD.format(event["title"], event["category"], event["day"], n_to_br(event["description"]))
 
 
 def no_event_card(date) -> str:
