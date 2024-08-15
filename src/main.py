@@ -33,7 +33,7 @@ def get_method(month: int, day: int):
 
 @app.get("/categorie/{category}")
 def get_method(category: str):
-    return HTMLResponse(render_category(category))
+    return HTMLResponse(render_category_by_month(category))
 
 
 @app.get("/events/{event_id}")

@@ -5,6 +5,8 @@ from src.tools.html_base import *
 
 LABELS = ["id", "day", "title", "description", "category"]
 
+MONTHS = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"]
+
 
 def to_str(number: int) -> str:
     return str(number).rjust(2, '0')
@@ -16,6 +18,10 @@ def date_to_str(date: datetime.date) -> str:
 
 def n_to_br(text: str) -> str:
     return text.replace("\n", "<br>")
+
+
+def parity(number: [int, str]) -> str:
+    return "odd" if int(number) % 2 else "even"
 
 
 def get_events_by_date(date: str) -> list[dict]:
@@ -49,7 +55,7 @@ def get_event_by_id(event_id: int) -> dict:
 
 
 def event_to_card(event: dict) -> str:
-    return CARD.format(event["id"], event["title"], event["category"], event["day"], n_to_br(event["description"]))
+    return CARD.format(event["title"], event["id"], event["title"], event["category"], event["day"], n_to_br(event["description"]))
 
 
 def event_to_single_card(event: dict) -> str:
@@ -104,6 +110,20 @@ def render_category(category: str) -> str:
     events_category = get_events_by_category(category)
     cards_category = list(map(lambda x: event_to_card(x), events_category))
     page_category = CARDS_CONTAINER.format("even", f"{CATEGORIES[category].value}", "\n".join(cards_category))
+    return HEADER + page_category + FOOTER
+
+
+def render_category_by_month(category: str) -> str:
+    events_category = get_events_by_category(category)
+    months = {f"{to_str(i)}": [] for i in range(1, 13)}
+    list(map(lambda x: months[x["day"].split("/")[1]].append(x), events_category))
+    page_category = ""
+    for month, events in map(lambda y: (int(y[0])-1, y[1]), sorted(months.items(), key=lambda x: int(x[0]))):
+        if events:
+            cards_category = list(map(lambda x: event_to_card(x), events))
+        else:
+            cards_category = [no_event_card(f"{MONTHS[month]}")]
+        page_category += CARDS_CONTAINER.format(parity(month), f"{MONTHS[month]} - {CATEGORIES[category].value}", "\n".join(cards_category))
     return HEADER + page_category + FOOTER
 
 

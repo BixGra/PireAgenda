@@ -83,7 +83,7 @@ CARDS_CONTAINER = f"""
 </div>"""
 
 CARD = f"""
-<div class="card" onclick="window.open('{root}/events/{{}}', '_self')">
+<div class="card" title="{{}}" onclick="window.open('{root}/events/{{}}', '_self')">
     <div class="card-header">
         <div class="card-title">{{}}</div>
         <div class="card-header-right">
@@ -115,9 +115,9 @@ SINGLE_CARD = f"""
 </div>"""
 
 NO_CARD = f"""
-<div class="card single-card" style="cursor: default;">
+<div class="card single-card no-event" style="cursor: default;">
     <div class="card-header">
-        <div class="card-title">Pas d'événement ce jour là</div>
+        <div class="card-title">Pas d'événement à cette date</div>
         <div class="card-header-right">
             <img class="card-image" src="{root}/src/img/tmp.png">
             <div class="card-date">
@@ -163,7 +163,6 @@ FILTER_DATE = f"""
     </div>
     <script src="{root}/src/script/selector.js"></script>
 </div>"""
-
 
 SINGLE_CATEGORY = f"""
 <div class="filter-item-child category" onclick="window.open('{root}/categorie/{{}}', '_self')">

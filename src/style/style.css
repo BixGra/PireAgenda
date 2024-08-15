@@ -122,6 +122,7 @@ label, #toggle {
 
 .cards {
     display: flex;
+    flex-direction: row-reverse;
     flex-wrap: wrap-reverse;
     flex: 1;
 }
@@ -225,6 +226,11 @@ label, #toggle {
 
 .single-card>.card-text>p {
     display: block;
+}
+
+.no-event {
+    background: rgb(188,214,205);
+    background: linear-gradient(135deg, rgba(188,214,205,1) 0%, rgb(125, 132, 129) 100%);
 }
 
 .filter {
