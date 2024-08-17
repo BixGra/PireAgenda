@@ -415,7 +415,7 @@ label, #toggle {
         min-width: 60px;
     }
 
-    .cards-container-label>p {
+    .cards-container-label > p {
         font-size: 18px;
     }
 
@@ -427,11 +427,23 @@ label, #toggle {
         overflow: hidden;
         display: block;
         font-size: 24px;
+        word-break: break-word;
     }
 
     .all-container {
         column-width: 300px;
         font-size: 18px;
+    }
+
+    .all-item {
+        white-space: unset;
+        text-overflow: unset;
+        overflow: unset;
+    }
+
+    .all-link:hover {
+        font-weight: normal;
+        color: #084152;
     }
 
     .filter-item {

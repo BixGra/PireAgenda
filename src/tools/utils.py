@@ -126,9 +126,6 @@ def render_all_events() -> str:
     list(map(lambda x: months[x["day"].split("/")[1]].append(x), all_events))
     page_events = ""
     for month, events in map(lambda y: (int(y[0])-1, y[1]), sorted(months.items(), key=lambda x: int(x[0]))):
-        print("-*-*-*-")
-        for event in sorted(events, key=lambda x: int(x["day"].split("/")[0])):
-            print(event)
         if events:
             page_event = list(map(lambda x: event_to_all_item(x), sorted(events, key=lambda x: int(x["day"].split("/")[0]))))
         else:
