@@ -84,6 +84,7 @@ label, #toggle {
 
 .cards-container-left {
     width: 100px;
+    min-width: 100px;
     z-index: -2;
 
     color: black;
@@ -226,6 +227,33 @@ label, #toggle {
 
 .single-card>.card-text>p {
     display: block;
+}
+
+.all-container {
+    display: block;
+    font-size: 24px;
+}
+
+.all-container {
+    column-count: 2;
+    column-rule: 2px solid #418B72;
+    column-width: 500px;
+}
+
+.all-item {
+    padding: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.all-link {
+    text-decoration: none;
+    color: #062E3A;
+}
+
+.all-link:hover {
+    color: #418B72;
 }
 
 .no-event {

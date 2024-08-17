@@ -25,6 +25,11 @@ def get_method():
     return HTMLResponse(render_index())
 
 
+@app.get("/all")
+def get_method():
+    return HTMLResponse(render_all_events())
+
+
 @app.get("/date/{month}/{day}")
 def get_method(month: int, day: int):
     date = f"{to_str(day)}/{to_str(month)}"

@@ -51,6 +51,7 @@ HEADER = f"""
             <div class="main_pages">
                 <a href="{root}/filter/date">Par date</a>
                 <a href="{root}/filter/categorie">Par catégorie</a>
+                <a href="{root}/all">Liste entière</a>
             </div>
         </nav>
     </div>"""
@@ -129,6 +130,26 @@ NO_CARD = f"""
         <p>Il n'y a pas d'événement enregistré pour cette date.</p>
     </div>
 </div>"""
+
+ALL_CONTAINER = f"""
+<div class="cards-container {{}}">
+    <div class="cards-container-left">
+        <div class="cards-container-label">
+            <p>{{}}</p>
+        </div>
+    </div>
+    <div class="cards">
+        <div class="card single-card all-container">
+            {{}}
+        </div>
+    </div>
+</div>"""
+
+ALL_ITEM = f"""
+<div class="all-item">
+    <a class="all-link" title="{{}}" href="{root}/events/{{}}">{{}}</a>
+</div>
+"""
 
 FILTER_DATE = f"""
 <div class="filter">

@@ -24,6 +24,16 @@ def parity(number: [int, str]) -> str:
     return "odd" if int(number) % 2 else "even"
 
 
+def get_all_events() -> list[dict]:
+    with sl.connect(f"./src/data/pireagenda.db") as con:
+        cur = con.cursor()
+        cur.execute(f"""
+            SELECT * FROM AGENDA;
+        """)
+        events = cur.fetchall()
+        return list(map(lambda x: dict(zip(LABELS, x)), events))
+
+
 def get_events_by_date(date: str) -> list[dict]:
     with sl.connect(f"./src/data/pireagenda.db") as con:
         cur = con.cursor()
@@ -52,6 +62,10 @@ def get_event_by_id(event_id: int) -> dict:
         """)
         event = cur.fetchall()
         return dict(zip(LABELS, event.pop()))
+
+
+def event_to_all_item(event: dict) -> str:
+    return ALL_ITEM.format(event["title"], event["id"], f'{event["day"]} - {event["title"]}')
 
 
 def event_to_card(event: dict) -> str:
@@ -106,6 +120,23 @@ def render_index(date: str = None) -> str:
     return HEADER + page_today + page_tomorrow + page_yesterday + FOOTER
 
 
+def render_all_events() -> str:
+    all_events = get_all_events()
+    months = {f"{to_str(i)}": [] for i in range(1, 13)}
+    list(map(lambda x: months[x["day"].split("/")[1]].append(x), all_events))
+    page_events = ""
+    for month, events in map(lambda y: (int(y[0])-1, y[1]), sorted(months.items(), key=lambda x: int(x[0]))):
+        print("-*-*-*-")
+        for event in sorted(events, key=lambda x: int(x["day"].split("/")[0])):
+            print(event)
+        if events:
+            page_event = list(map(lambda x: event_to_all_item(x), sorted(events, key=lambda x: int(x["day"].split("/")[0]))))
+        else:
+            page_event = [no_event_card(f"{MONTHS[month]}")]
+        page_events += ALL_CONTAINER.format(parity(month), f"{MONTHS[month]}", "\n".join(page_event))
+    return HEADER + page_events + FOOTER
+
+
 def render_category(category: str) -> str:
     events_category = get_events_by_category(category)
     cards_category = list(map(lambda x: event_to_card(x), events_category))
@@ -120,7 +151,7 @@ def render_category_by_month(category: str) -> str:
     page_category = ""
     for month, events in map(lambda y: (int(y[0])-1, y[1]), sorted(months.items(), key=lambda x: int(x[0]))):
         if events:
-            cards_category = list(map(lambda x: event_to_card(x), events))
+            cards_category = list(map(lambda x: event_to_card(x), sorted(events, key=lambda x: int(x["day"].split("/")[0]), reverse=True)))
         else:
             cards_category = [no_event_card(f"{MONTHS[month]}")]
         page_category += CARDS_CONTAINER.format(parity(month), f"{MONTHS[month]} - {CATEGORIES[category].value}", "\n".join(cards_category))
