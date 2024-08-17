@@ -253,7 +253,8 @@ label, #toggle {
 }
 
 .all-link:hover {
-    color: #418B72;
+    font-weight: bold;
+    color: #084152;
 }
 
 .no-event {
