@@ -6,27 +6,55 @@ root = "/pireagenda" if "PIREAGENDAPROD" in os.environ else ""
 
 class CATEGORIES(Enum):
     angledroit = "AngleDroit"
+    animaux = "Animaux"
     art = "Art"
-    cinema = "Cinéma"
+    cinema_series = "Cinéma/Séries"
+    conflit = "Conflit"
+    culture = "Culture"
     divers = "Divers"
-    education = "Education"
-    environnement = "Environnement"
+    droit_justice = "Droit/Justice"
+    ecologie_environnement = "Écologie/Environnement"
+    economie = "Économie"
+    education = "Éducation"
     feminisme = "Féminisme"
+    gaming = "Gaming"
     gastronomie = "Gastronomie"
     geographie = "Géographie"
     histoire = "Histoire"
+    humour = "Humour"
+    information = "Information"
+    innovation = "Innovation"
     internet = "Internet"
+    jeunesse = "Jeunesse"
     jeux = "Jeux"
     langues = "Langues"
     litterature = "Littérature"
-    media = "Média"
+    lgbt = "LGBTQIA+"
+    loisirs = "Loisirs"
+    medias = "Médias"
     musique = "Musique"
-    nature = "Nature"
+    politique = "Politique"
+    religions = "Religions"
     sante = "Santé"
     sciences = "Sciences"
+    sciences_sociales = "Sciences sociales"
     societe = "Société"
+    solidarite = "Solidarité"
     sports = "Sports"
+    technologies = "Technologies"
+    television = "Télévision"
+    travail = "Travail"
+    twitch = "Twitch"
+    vegetaux = "Végétaux"
 
+    sans_categorie = "Sans catégorie"
+
+
+def get_category(category: str) -> str:
+    try:
+        return CATEGORIES[category].value
+    except KeyError:
+        return "none"
 
 HEADER = f"""
 <!doctype html>
@@ -36,6 +64,7 @@ HEADER = f"""
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="{root}/src/img/education.png">
     <link href="{root}/src/style/style.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="{root}/src/style/categories.css" media="screen" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -64,10 +93,10 @@ FOOTER = f"""
             <p>Agenda des journées mondiales, internationales et bien d'autres. Le calendrier comprend aussi quelques dates et événements liés au stream francophone.</p>
         </div>
         <div class="footer-content">
-            <p>Le site est encore en <a class="footer-link" href="https://github.com/BixGra/PireAgenda" target="_blank">plein développement (repo GitHub)</a> et je ne suis pas dev' web donc il y a pas mal de soucis à régler. Tout retour ou aide sont les bienvenus <a class="footer-link" href="https://twitter.com/babiilabilux">par message</a> !</p>
+            <p>Le site est encore en <a class="footer-link" href="https://github.com/BixGra/PireAgenda" target="_blank">plein développement (repo GitHub)</a> et je ne suis pas dev' web donc il y a pas mal de soucis à régler. Tout retour ou aide sont les bienvenus <a class="footer-link" href="https://twitter.com/babiilabilux" target="_blank">par message</a> !</p>
         </div>
         <div class="footer-content">
-            <p>Images via <a class="footer-link" href="https://www.flaticon.com/free-icons/art" title="art icons">Freepik - Flaticon</a>.</p>
+            <p>Images via <a class="footer-link" href="https://www.flaticon.com/" title="Flaticon" target="_blank">Freepik - Flaticon</a>.</p>
         </div>
     </div>
 </body>
@@ -97,6 +126,9 @@ CARD = f"""
     <div class="card-text">
         <p>{{}}</p>
     </div>
+    <div class="card-bottom">
+        {{}}
+    </div>
 </div>"""
 
 SINGLE_CARD = f"""
@@ -112,6 +144,9 @@ SINGLE_CARD = f"""
     </div>
     <div class="card-text">
         <p>{{}}</p>
+    </div>
+    <div class="card-bottom">
+        {{}}
     </div>
 </div>"""
 
@@ -130,6 +165,16 @@ NO_CARD = f"""
         <p>Il n'y a pas d'événement enregistré pour cette date.</p>
     </div>
 </div>"""
+
+TAGS_CONTAINER = f"""
+<div class="card-tags">
+    {{}}
+</div>
+"""
+
+TAG = f"""
+<div class="card-tag {{}}" title="" onclick="window.open('{root}/categorie/{{}}', '_self'); event.stopPropagation();">{{}}</div>
+"""
 
 ALL_CONTAINER = f"""
 <div class="cards-container {{}}">
@@ -186,18 +231,18 @@ FILTER_DATE = f"""
 </div>"""
 
 SINGLE_CATEGORY = f"""
-<div class="filter-item-child category" onclick="window.open('{root}/categorie/{{}}', '_self')">
+<div class="filter-item-child category {{}}" onclick="window.open('{root}/categorie/{{}}', '_self')">
     <div class="category-text">
         <p>{{}}</p>
     </div>
-    <div>
+    <div class="category-right">
         <img class="category-image" src="{root}/src/img/{{}}.png">
     </div>
 </div>"""
 
 FILTER_CATEGORY = f"""
 <div class="filter">
-    <div class="filter-item">
-        {"".join([SINGLE_CATEGORY.format(c.name, c.value, c.name) for c in CATEGORIES])}
+    <div class="filter-item categories">
+        {"".join([SINGLE_CATEGORY.format(c.name, c.name, c.value, c.name) for c in CATEGORIES])}
     </div>
 </div>"""

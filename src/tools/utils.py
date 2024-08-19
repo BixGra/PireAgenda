@@ -3,7 +3,7 @@ import sqlite3 as sl
 
 from src.tools.html_base import *
 
-LABELS = ["id", "day", "title", "description", "category"]
+LABELS = ["id", "day", "title", "description", "category1", "category2", "category3"]
 
 MONTHS = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"]
 
@@ -48,7 +48,11 @@ def get_events_by_category(category: str) -> list[dict]:
     with sl.connect(f"./src/data/pireagenda.db") as con:
         cur = con.cursor()
         cur.execute(f"""
-            SELECT * FROM AGENDA WHERE category = '{category}' ORDER BY date DESC;
+            SELECT * FROM AGENDA WHERE (
+                category1 = '{category}'
+                OR category2 = '{category}'
+                OR category3 = '{category}'
+            ) ORDER BY date DESC;
         """)
         events = cur.fetchall()
         return list(map(lambda x: dict(zip(LABELS, x)), events))
@@ -68,12 +72,23 @@ def event_to_all_item(event: dict) -> str:
     return ALL_ITEM.format(event["title"], event["id"], f'{event["day"]} - {event["title"]}')
 
 
+def category_to_tag(category: str) -> str:
+    return TAG.format(category, category, get_category(category))
+
+
+def event_to_tags(event: dict) -> str:
+    tags = [category_to_tag(event[category]) for category in ["category1", "category2", "category3"] if not event[category] == "none"]
+    return TAGS_CONTAINER.format("\n".join(tags))
+
+
 def event_to_card(event: dict) -> str:
-    return CARD.format(event["title"], event["id"], event["title"], event["category"], event["day"], n_to_br(event["description"]))
+    page_tags = event_to_tags(event)
+    return CARD.format(event["title"], event["id"], event["title"], event["category1"], event["day"], n_to_br(event["description"]), page_tags)
 
 
 def event_to_single_card(event: dict) -> str:
-    return SINGLE_CARD.format(event["title"], event["category"], event["day"], n_to_br(event["description"]))
+    page_tags = event_to_tags(event)
+    return SINGLE_CARD.format(event["title"], event["category1"], event["day"], n_to_br(event["description"]), page_tags)
 
 
 def no_event_card(date) -> str:
@@ -137,7 +152,7 @@ def render_all_events() -> str:
 def render_category(category: str) -> str:
     events_category = get_events_by_category(category)
     cards_category = list(map(lambda x: event_to_card(x), events_category))
-    page_category = CARDS_CONTAINER.format("even", f"{CATEGORIES[category].value}", "\n".join(cards_category))
+    page_category = CARDS_CONTAINER.format("even", f"{get_category(category)}", "\n".join(cards_category))
     return HEADER + page_category + FOOTER
 
 
@@ -151,7 +166,7 @@ def render_category_by_month(category: str) -> str:
             cards_category = list(map(lambda x: event_to_card(x), sorted(events, key=lambda x: int(x["day"].split("/")[0]), reverse=True)))
         else:
             cards_category = [no_event_card(f"{MONTHS[month]}")]
-        page_category += CARDS_CONTAINER.format(parity(month), f"{MONTHS[month]} - {CATEGORIES[category].value}", "\n".join(cards_category))
+        page_category += CARDS_CONTAINER.format(parity(month), f"{MONTHS[month]} - {get_category(category)}", "\n".join(cards_category))
     return HEADER + page_category + FOOTER
 
 

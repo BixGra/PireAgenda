@@ -120,12 +120,13 @@ label, #toggle {
     font-size: 24px;
 }
 
-
 .cards {
     display: flex;
     flex-direction: row-reverse;
     flex-wrap: wrap-reverse;
     flex: 1;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 .card {
@@ -229,6 +230,34 @@ label, #toggle {
     display: block;
 }
 
+.card-bottom {
+    display: flex;
+    justify-content: center;
+
+    border-top: 2px solid #418B72;
+}
+
+.card-tags {
+    flex: 1;
+    max-width: 300px;
+
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 10px;
+}
+
+.card-tag {
+    background: #BCD6CD;
+    padding: 0 10px 0 10px;
+    border-radius: 30px;
+    color: black;
+}
+
+.card-tag:hover {
+    background: #7D8481;
+}
+
 .all-container {
     display: block;
     font-size: 24px;
@@ -283,6 +312,7 @@ label, #toggle {
     background: rgb(188,214,205);
     background: linear-gradient(135deg, rgba(188,214,205,1) 0%, rgba(99,159,139,1) 100%);
     border-radius: 25px;
+    transition: border-radius 0.3s;
 
     margin: 10px;
     padding: 10px;
@@ -317,15 +347,20 @@ label, #toggle {
     max-width: 370px;
 }
 
+.categories {
+    max-width: 1800px;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
 .category {
     width: 500px;
 
+    margin-left: 20px;
+    margin-right: 20px;
+
     display: flex;
     align-items: center;
-}
-
-.category:hover {
-    cursor: pointer;
 }
 
 .category-text {
@@ -336,11 +371,29 @@ label, #toggle {
     text-align: center;
 }
 
+.category-right {
+    display: flex;
+    align-items: center;
+}
+
 .category-image {
     max-width: 80px;
     max-height: 80px;
 
     border-radius: 15px;
+    transition: border-top-right-radius 0.3s;
+}
+
+.category:hover {
+    cursor: pointer;
+    border-radius: 35px;
+    transition: border-radius 0.3s;
+
+    .category-image {
+        border-top-right-radius: 25px;
+        border-bottom-right-radius: 25px;
+        transition: border-top-right-radius 0.3s;
+    }
 }
 
 .footer {
@@ -410,12 +463,17 @@ label, #toggle {
         display: flex;
     }
 
+    .cards {
+        padding-left: unset;
+        padding-right: unset;
+    }
+
     .cards-container-left {
         width: 60px;
         min-width: 60px;
     }
 
-    .cards-container-label > p {
+    .cards-container-label>p {
         font-size: 18px;
     }
 
@@ -428,6 +486,10 @@ label, #toggle {
         display: block;
         font-size: 24px;
         word-break: break-word;
+    }
+
+    .card-image {
+        display: none;
     }
 
     .all-container {
@@ -453,4 +515,12 @@ label, #toggle {
     #title, #search {
         width: 100%;
     }
+}
+
+.angledroit {
+    background: #639f8b;
+}
+
+.angledroit:hover {
+    background: #bcd6cd;
 }
