@@ -239,10 +239,11 @@ label, #toggle {
 
 .card-tags {
     flex: 1;
-    max-width: 300px;
+    max-width: 60%;
 
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    flex-wrap: wrap;
 
     margin-top: 10px;
 }
@@ -250,6 +251,7 @@ label, #toggle {
 .card-tag {
     background: #BCD6CD;
     padding: 0 10px 0 10px;
+    margin-top: 5px;
     border-radius: 30px;
     color: black;
 }
