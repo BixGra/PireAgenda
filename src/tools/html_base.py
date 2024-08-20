@@ -33,6 +33,7 @@ class CATEGORIES(Enum):
     loisirs = "Loisirs"
     medias = "Médias"
     musique = "Musique"
+    pire_commu = "Pire Commu"
     politique = "Politique"
     religions = "Religions"
     sante = "Santé"
