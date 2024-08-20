@@ -28,8 +28,8 @@ class CATEGORIES(Enum):
     jeunesse = "Jeunesse"
     jeux = "Jeux"
     langues = "Langues"
-    litterature = "Littérature"
     lgbt = "LGBTQIA+"
+    litterature = "Littérature"
     loisirs = "Loisirs"
     medias = "Médias"
     musique = "Musique"
@@ -63,7 +63,7 @@ HEADER = f"""
 <head>
     <title>Pire Agenda</title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="{root}/src/img/education.png">
+    <link rel="icon" type="image/x-icon" href="{root}/src/img/divers.png">
     <link href="{root}/src/style/style.css" media="screen" rel="stylesheet" type="text/css"/>
     <link href="{root}/src/style/categories.css" media="screen" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
@@ -156,7 +156,7 @@ NO_CARD = f"""
     <div class="card-header">
         <div class="card-title">Pas d'événement à cette date</div>
         <div class="card-header-right">
-            <img class="card-image" src="{root}/src/img/tmp.png">
+            <img class="card-image" src="{root}/src/img/divers.png">
             <div class="card-date">
                 <p>{{}}</p>
             </div>
