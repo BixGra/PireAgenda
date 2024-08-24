@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 from matplotlib import colormaps
 
-from tools.html_base import CATEGORIES
+from tools.html_base import CATEGORIES, root
 
 con = sl.connect(f"./src/data/pireagenda.db")
 
@@ -68,6 +68,10 @@ def to_256_tint_2(value: float) -> int:
 
 
 with open("./src/style/categories.css", "w") as f:
+    f.write(f"""body {{
+    background-image: url("{root}/src/img/background.png");
+    background-size: 128px;
+}}""")
     for g, category in zip(cmap(gradient), CATEGORIES):
         if category.name == "angledroit":
             pass

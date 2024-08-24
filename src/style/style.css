@@ -99,7 +99,7 @@ label, #toggle {
 }
 
 .odd>.cards {
-    background-color: #062E3A;
+    background-color: #062E3AAA;
 }
 
 .cards-container-label {
@@ -125,8 +125,8 @@ label, #toggle {
     flex-direction: row-reverse;
     flex-wrap: wrap-reverse;
     flex: 1;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 200px;
+    padding-right: 200px;
 }
 
 .card {
