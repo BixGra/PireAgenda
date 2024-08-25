@@ -178,7 +178,7 @@ label, #toggle {
 
     flex: 1;
 
-    font-size: 36px;
+    font-size: 28px;
 }
 
 .card-image {
@@ -228,6 +228,16 @@ label, #toggle {
 
 .single-card>.card-text>p {
     display: block;
+}
+
+.card-link {
+    text-decoration: none;
+    color: #062E3A;
+}
+
+.card-link:hover {
+    color: #084152;
+    font-weight: bold;
 }
 
 .card-bottom {
@@ -486,7 +496,7 @@ label, #toggle {
     .card-title {
         overflow: hidden;
         display: block;
-        font-size: 24px;
+        font-size: 20px;
         word-break: break-word;
     }
 

@@ -3,7 +3,7 @@ import sqlite3 as sl
 
 from src.tools.html_base import *
 
-LABELS = ["id", "day", "title", "description", "category1", "category2", "category3"]
+LABELS = ["id", "day", "title", "description", "category1", "category2", "category3", "link", "link_title"]
 
 MONTHS = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"]
 
@@ -72,6 +72,13 @@ def event_to_all_item(event: dict) -> str:
     return ALL_ITEM.format(event["title"], event["id"], f'{event["day"]} - {event["title"]}')
 
 
+def event_to_text(event: dict) -> str:
+    description = n_to_br(event["description"])
+    title = event["link_title"] if not event["link_title"] == "none" else "Pour aller plus loin"
+    link = CARD_LINK.format(title, event["link"], title) if not event["link"] == "none" else ""
+    return description + link
+
+
 def category_to_tag(category: str) -> str:
     return TAG.format(category, category, get_category(category))
 
@@ -83,12 +90,12 @@ def event_to_tags(event: dict) -> str:
 
 def event_to_card(event: dict) -> str:
     page_tags = event_to_tags(event)
-    return CARD.format(event["title"], event["id"], event["title"], event["category1"], event["day"], n_to_br(event["description"]), page_tags)
+    return CARD.format(event["title"], event["id"], event["title"], event["category1"], event["day"], event_to_text(event), page_tags)
 
 
 def event_to_single_card(event: dict) -> str:
     page_tags = event_to_tags(event)
-    return SINGLE_CARD.format(event["title"], event["category1"], event["day"], n_to_br(event["description"]), page_tags)
+    return SINGLE_CARD.format(event["title"], event["category1"], event["day"], event_to_text(event), page_tags)
 
 
 def no_event_card(date) -> str:

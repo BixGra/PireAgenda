@@ -22,11 +22,13 @@ with con:
             description TEXT,
             category1 TEXT DEFAULT 'sans_categorie',
             category2 TEXT DEFAULT 'none',
-            category3 TEXT DEFAULT 'none'
+            category3 TEXT DEFAULT 'none',
+            link TEXT DEFAULT 'none',
+            link_title TEXT DEFAULT 'none'
         );
     """)
 
-sql_agenda = """INSERT INTO AGENDA (id, date, title, description, category1, category2, category3) values(?, ?, ?, ?, ?, ?, ?)"""
+sql_agenda = """INSERT INTO AGENDA (id, date, title, description, category1, category2, category3, link, link_title) values(?, ?, ?, ?, ?, ?, ?, ?, ?)"""
 
 
 def convert_google_sheet_url(url):
@@ -42,11 +44,11 @@ def check_cat1(cat) -> str:
     return cat if isinstance(cat, str) else "sans_categorie"
 
 
-def check_cat23(cat) -> str:
+def check_cat(cat) -> str:
     return cat if isinstance(cat, str) else "none"
 
 
-agenda = [(int(row["id"]), row["date"], row["nom"], row["description"], check_cat1(row["categorie1"]), check_cat23(row["categorie2"]), check_cat23(row["categorie3"])) for row in df.iloc]
+agenda = [(int(row["id"]), row["date"], row["nom"], row["description"], check_cat1(row["categorie1"]), check_cat(row["categorie2"]), check_cat(row["categorie3"]), check_cat(row["lien"]), check_cat(row["titre_lien"])) for row in df.iloc]
 with con:
     con.executemany(sql_agenda, agenda)
 

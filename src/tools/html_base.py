@@ -167,6 +167,8 @@ NO_CARD = f"""
     </div>
 </div>"""
 
+CARD_LINK = f"""<br><br>Lien externe : <a class="card-link" title="{{}}" href="{{}}" target="_blank" onclick="event.stopPropagation();">{{}}</a>"""
+
 TAGS_CONTAINER = f"""
 <div class="card-tags">
     {{}}
