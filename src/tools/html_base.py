@@ -91,7 +91,7 @@ HEADER = f"""
 FOOTER = f"""
     <div class="footer">
         <div class="footer-content">
-            <p>Agenda des journées mondiales, internationales et bien d'autres. Le calendrier comprend aussi quelques dates et événements liés au stream francophone.</p>
+            <p>Agenda des journées mondiales, internationales et bien d'autres. Le calendrier comprend aussi quelques dates et événements liés au stream francophone. Ce site n'est pas géré par AngleDroit.</p>
         </div>
         <div class="footer-content">
             <p>Le site est encore en <a class="footer-link" href="https://github.com/BixGra/PireAgenda" target="_blank">plein développement (repo GitHub)</a> et je ne suis pas dev' web donc il y a pas mal de soucis à régler. Tout retour ou aide sont les bienvenus <a class="footer-link" href="https://twitter.com/babiilabilux" target="_blank">par message</a> !</p>
