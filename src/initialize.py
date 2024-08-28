@@ -73,7 +73,8 @@ with open("./src/style/categories.css", "w") as f:
     f.write(f"""body {{
     background-image: url("{root}/src/img/background.png");
     background-size: 128px;
-}}""")
+}}
+""")
     for g, category in zip(cmap(gradient), CATEGORIES):
         if category.name == "angledroit":
             pass
