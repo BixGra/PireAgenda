@@ -110,7 +110,9 @@ CARDS_CONTAINER = f"""
             <p>{{}}</p>
         </div>
     </div>
-    <div class="cards">{{}}</div>
+    <div class="cards">
+        {{}}
+    </div>
 </div>"""
 
 CARD = f"""
