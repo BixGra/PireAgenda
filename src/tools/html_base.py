@@ -222,7 +222,7 @@ FILTER_DATE = f"""
             <option value="9">Septembre</option>
             <option value="10">Octobre</option>
             <option value="11">Novembre</option>
-            <option value="12">Decembre</option>
+            <option value="12">Décembre</option>
         </select>
         <label for="day"></label>
         <select class="filter-item-child" id="day">
