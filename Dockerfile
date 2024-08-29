@@ -4,7 +4,7 @@ WORKDIR /etc/PireAgenda
 
 COPY ./requirements.txt /etc/PiraAgenda/requirements.txt
 
-RUN  pip install --upgrade pip && pip --no-cache-dir install -r /etc/PireAgenda/requirements.txt
+RUN pip install --upgrade pip && pip --no-cache-dir install -r /etc/PireAgenda/requirements.txt
 
 COPY . /etc/PireAgenda/.
 
