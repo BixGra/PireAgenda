@@ -2,7 +2,7 @@ FROM python:3.10
 
 WORKDIR /etc/PireAgenda
 
-COPY ./requirements.txt /etc/PiraAgenda/requirements.txt
+COPY ./requirements.txt /etc/PireAgenda/requirements.txt
 
 RUN pip install --upgrade pip && pip --no-cache-dir install -r /etc/PireAgenda/requirements.txt
 
