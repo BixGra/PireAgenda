@@ -1,9 +1,19 @@
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.triggers.cron import CronTrigger
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from starlette.staticfiles import StaticFiles
 
 from src.tools.utils import *
+from src.tools.db_refresh import *
+
+scheduler = BackgroundScheduler()
+trigger = CronTrigger(hour=1, minute=0)
+scheduler.add_job(db_refresh, trigger)
+
+scheduler.start()
+
 
 app = FastAPI()
 app.mount("/src", StaticFiles(directory="src"))

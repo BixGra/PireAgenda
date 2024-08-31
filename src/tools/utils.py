@@ -150,9 +150,11 @@ def render_all_events() -> str:
     for month, events in map(lambda y: (int(y[0])-1, y[1]), sorted(months.items(), key=lambda x: int(x[0]))):
         if events:
             page_event = list(map(lambda x: event_to_all_item(x), sorted(events, key=lambda x: int(x["day"].split("/")[0]))))
+            amount_events = len(page_event)
         else:
             page_event = [no_event_card(f"{MONTHS[month]}")]
-        page_events += ALL_CONTAINER.format(parity(month), f"{MONTHS[month]}", "\n".join(page_event))
+            amount_events = 0
+        page_events += ALL_CONTAINER.format(parity(month), f"{MONTHS[month]} - {amount_events} événements", "\n".join(page_event))
     return HEADER + page_events + FOOTER
 
 
