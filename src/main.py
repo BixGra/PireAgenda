@@ -10,7 +10,7 @@ from src.tools.db_refresh import db_refresh
 from src.tools.utils import render_all_events, render_category_by_month, render_event, render_filter_category, render_filter_date, render_index, to_str
 
 scheduler = BackgroundScheduler()
-trigger = CronTrigger(hour=17, minute=0)
+trigger = CronTrigger(hour=21, minute=0)
 scheduler.add_job(db_refresh, trigger)
 
 scheduler.start()
