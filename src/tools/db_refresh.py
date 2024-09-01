@@ -2,6 +2,7 @@ import re
 import sqlite3 as sl
 
 import pandas as pd
+from loguru import logger
 
 
 def convert_google_sheet_url(url):
@@ -19,6 +20,7 @@ def check_cat(cat) -> str:
 
 
 def db_refresh():
+    logger.info("Refreshing DB")
     con = sl.connect(f"./src/data/pireagenda.db")
 
     # Journees
@@ -43,9 +45,10 @@ def db_refresh():
     sql_agenda = """INSERT INTO AGENDA (id, date, title, description, category1, category2, category3, link, link_title) values(?, ?, ?, ?, ?, ?, ?, ?, ?)"""
 
     url = convert_google_sheet_url("https://docs.google.com/spreadsheets/d/161ygk8Gyjn4JXMcP_fSjTJB776P0uZUsG7K8TTCYYV4/edit#gid=0")
-
+    logger.info("Downloading DB")
     df = pd.read_csv(url).dropna(subset=["id", "date", "nom", "description"])
-
+    logger.info("Populating DB")
     agenda = [(int(row["id"]), row["date"], row["nom"], row["description"], check_cat1(row["categorie1"]), check_cat(row["categorie2"]), check_cat(row["categorie3"]), check_cat(row["lien"]), check_cat(row["titre_lien"])) for row in df.iloc]
     with con:
         con.executemany(sql_agenda, agenda)
+    logger.info("DB refreshed")
