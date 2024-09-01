@@ -105,7 +105,7 @@ def no_event_card(date) -> str:
 def render_index(date: str = None) -> str:
     is_today = not bool(date)
     if is_today:
-        date = datetime.date.today() + datetime.timedelta(hours=2)
+        date = (datetime.datetime.now() + datetime.timedelta(hours=2)).date()  #Adapt to server timezone
     else:
         date = datetime.datetime.strptime(date + "/2024", "%d/%m/%Y").date()
 
