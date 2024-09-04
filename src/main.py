@@ -72,3 +72,10 @@ def get_method():
 def get_method():
     logger.info("Filter by category")
     return HTMLResponse(render_filter_category())
+
+
+@app.get("/db_refresh")
+def get_method():
+    logger.info("DB Refresh")
+    db_refresh()
+    return "ok"
