@@ -7,8 +7,8 @@ services:
     ports:
       - "8003:8003"
     networks:
-      - mynet
+      - sandbixproxy_mynet
 
 networks:
-  mynet:
+  sandbixproxy_mynet:
     external: true
