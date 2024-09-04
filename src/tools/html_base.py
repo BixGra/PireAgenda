@@ -16,6 +16,7 @@ class CATEGORIES(Enum):
     ecologie_environnement = "Écologie/Environnement"
     economie = "Économie"
     education = "Éducation"
+    fete_nationale = "Fête nationale"
     feminisme = "Féminisme"
     gaming = "Gaming"
     gastronomie = "Gastronomie"
