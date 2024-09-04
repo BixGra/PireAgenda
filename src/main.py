@@ -6,7 +6,7 @@ from fastapi.responses import HTMLResponse
 from loguru import logger
 from starlette.staticfiles import StaticFiles
 
-from src.tools.db_refresh import db_refresh
+from src.tools.db_refresh import db_refresh, Refresher
 from src.tools.utils import render_all_events, render_category_by_month, render_event, render_filter_category, render_filter_date, render_index, to_str
 
 scheduler = BackgroundScheduler()
@@ -77,5 +77,5 @@ def get_method():
 @app.get("/db_refresh")
 def get_method():
     logger.info("DB Refresh")
-    db_refresh()
-    return "ok"
+    with Refresher():
+        return "DB refresh started"

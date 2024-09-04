@@ -51,4 +51,16 @@ def db_refresh():
     agenda = [(int(row["id"]), row["date"], row["nom"], row["description"], check_cat1(row["categorie1"]), check_cat(row["categorie2"]), check_cat(row["categorie3"]), check_cat(row["lien"]), check_cat(row["titre_lien"])) for row in df.iloc]
     with con:
         con.executemany(sql_agenda, agenda)
+    del agenda
     logger.info("DB refreshed")
+
+
+class Refresher:
+    def __init__(self):
+        pass
+
+    def __enter__(self):
+        pass
+
+    def __exit__(self, *args, **kwargs):
+        db_refresh()
