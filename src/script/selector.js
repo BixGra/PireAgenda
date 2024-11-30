@@ -19,13 +19,13 @@ function populateDays(month) {
 monthSelect.addEventListener('change', () => {
   const selectedMonth = monthSelect.value;
   populateDays(selectedMonth);
-  searchButton.setAttribute( "onClick", "window.open('" + root +"/date/" + monthSelect.value.padStart(2, "0") + "/" + daySelect.value.padStart(2, "0") + "', '_self')" );
+  searchButton.setAttribute( "onclick", "window.open('" + root +"/date/" + monthSelect.value.padStart(2, "0") + "/" + daySelect.value.padStart(2, "0") + "', '_self')" );
 });
 
 // Event listener for day change
 daySelect.addEventListener('change', () => {
   const selectedDay = daySelect.value;
-  searchButton.setAttribute( "onClick", "window.open('" + root +"/date/" + monthSelect.value.padStart(2, "0") + "/" + daySelect.value.padStart(2, "0") + "', '_self')" );
+  searchButton.setAttribute( "onclick", "window.open('" + root +"/date/" + monthSelect.value.padStart(2, "0") + "/" + daySelect.value.padStart(2, "0") + "', '_self')" );
 });
 
 // Initial population of days

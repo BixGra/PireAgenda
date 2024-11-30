@@ -4,8 +4,6 @@ services:
   pireagenda:
     image: pireagenda:latest
     container_name: pireagenda
-    ports:
-      - "8003:8003"
     networks:
       - sandbixproxy_mynet
 

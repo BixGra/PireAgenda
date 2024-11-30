@@ -18,6 +18,6 @@ ENV PIREAGENDAPROD True
 
 RUN python src/initialize.py
 
-EXPOSE 8003
+EXPOSE 8000
 
-ENTRYPOINT gunicorn -b 0.0.0.0:8003 -k uvicorn.workers.UvicornWorker src.main:app --threads 2 --workers 1 --timeout 1000 --graceful-timeout 30
+ENTRYPOINT gunicorn -b 0.0.0.0:8000 -k uvicorn.workers.UvicornWorker src.main:app --threads 2 --workers 1 --timeout 1000 --graceful-timeout 30
