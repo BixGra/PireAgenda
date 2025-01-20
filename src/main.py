@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from loguru import logger
+from starlette.responses import RedirectResponse
 from starlette.staticfiles import StaticFiles
 
 from src.tools.db_refresh import db_refresh, Refresher
@@ -78,4 +79,4 @@ def get_method():
 def get_method():
     logger.info("DB Refresh")
     with Refresher():
-        return "DB refresh started"
+        return RedirectResponse("/")
