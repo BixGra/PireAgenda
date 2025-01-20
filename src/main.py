@@ -79,4 +79,4 @@ def get_method():
 def get_method():
     logger.info("DB Refresh")
     with Refresher():
-        return RedirectResponse("/")
+        return RedirectResponse("https://sandbix.fr/pireagenda/")
