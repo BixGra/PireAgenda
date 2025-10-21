@@ -26,7 +26,7 @@ db_refresh()
 
 with open("./src/style/categories.css", "w") as f:
     f.write(f"""body {{
-    background-image: url("./src/img/background.png");
+    background-image: url('/src/img/background.png");
     background-size: 128px;
 }}
 """)
