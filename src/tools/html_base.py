@@ -1,8 +1,6 @@
 import os
 from enum import Enum
 
-root = "/pireagenda" if "PIREAGENDAPROD" in os.environ else ""
-
 
 class CATEGORIES(Enum):
     angledroit = "AngleDroit"
@@ -64,14 +62,14 @@ HEADER = f"""
 <head>
     <title>Pire Agenda</title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="{root}/src/img/divers.png">
-    <link href="{root}/src/style/style.css" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="{root}/src/style/categories.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link rel="icon" type="image/x-icon" href="./src/img/divers.png">
+    <link href="./src/style/style.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="./src/style/categories.css" media="screen" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="header">
-        <div class="header-left" onclick="window.open('{root}/today', '_self')">
+        <div class="header-left" onclick="window.open('./today', '_self')">
             <div class="header-title">
                 Pire Agenda
             </div>
@@ -80,9 +78,9 @@ HEADER = f"""
             <label for="toggle">☰</label>
             <input type="checkbox" id="toggle">
             <div class="main_pages">
-                <a href="{root}/filter/date">Par date</a>
-                <a href="{root}/filter/categorie">Par catégorie</a>
-                <a href="{root}/all">Liste entière</a>
+                <a href="./filter/date">Par date</a>
+                <a href="./filter/categorie">Par catégorie</a>
+                <a href="./all">Liste entière</a>
             </div>
         </nav>
     </div>"""
@@ -117,11 +115,11 @@ CARDS_CONTAINER = f"""
 </div>"""
 
 CARD = f"""
-<div class="card" title="{{}}" onclick="window.open('{root}/events/{{}}', '_self')">
+<div class="card" title="{{}}" onclick="window.open('./events/{{}}', '_self')">
     <div class="card-header">
         <div class="card-title">{{}}</div>
         <div class="card-header-right">
-            <img class="card-image" src="{root}/src/img/{{}}.png">
+            <img class="card-image" src="./src/img/{{}}.png">
             <div class="card-date">
                 <p>{{}}</p>
             </div>
@@ -140,7 +138,7 @@ SINGLE_CARD = f"""
     <div class="card-header">
         <div class="card-title">{{}}</div>
         <div class="card-header-right">
-            <img class="card-image" src="{root}/src/img/{{}}.png">
+            <img class="card-image" src="./src/img/{{}}.png">
             <div class="card-date">
                 <p>{{}}</p>
             </div>
@@ -159,7 +157,7 @@ NO_CARD = f"""
     <div class="card-header">
         <div class="card-title">Pas d'événement à cette date</div>
         <div class="card-header-right">
-            <img class="card-image" src="{root}/src/img/divers.png">
+            <img class="card-image" src="./src/img/divers.png">
             <div class="card-date">
                 <p>{{}}</p>
             </div>
@@ -179,7 +177,7 @@ TAGS_CONTAINER = f"""
 """
 
 TAG = f"""
-<div class="card-tag {{}}" title="" onclick="window.open('{root}/categorie/{{}}', '_self'); event.stopPropagation();">{{}}</div>
+<div class="card-tag {{}}" title="" onclick="window.open('./categorie/{{}}', '_self'); event.stopPropagation();">{{}}</div>
 """
 
 ALL_CONTAINER = f"""
@@ -198,7 +196,7 @@ ALL_CONTAINER = f"""
 
 ALL_ITEM = f"""
 <div class="all-item">
-    <a class="all-link" title="{{}}" href="{root}/events/{{}}">{{}}</a>
+    <a class="all-link" title="{{}}" href="./events/{{}}">{{}}</a>
 </div>
 """
 
@@ -231,18 +229,18 @@ FILTER_DATE = f"""
     </div>
     <div class="filter-item">
         <label for="search"></label>
-        <button class="filter-item-child" id="search" root="{root}" onclick="window.open('{root}/date/01/01', '_self')">Chercher</button>
+        <button class="filter-item-child" id="search" root="." onclick="window.open('./date/01/01', '_self')">Chercher</button>
     </div>
-    <script src="{root}/src/script/selector.js"></script>
+    <script src="./src/script/selector.js"></script>
 </div>"""
 
 SINGLE_CATEGORY = f"""
-<div class="filter-item-child category {{}}" onclick="window.open('{root}/categorie/{{}}', '_self')">
+<div class="filter-item-child category {{}}" onclick="window.open('./categorie/{{}}', '_self')">
     <div class="category-text">
         <p>{{}}</p>
     </div>
     <div class="category-right">
-        <img class="category-image" src="{root}/src/img/{{}}.png">
+        <img class="category-image" src="./src/img/{{}}.png">
     </div>
 </div>"""
 
