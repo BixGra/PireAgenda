@@ -1,7 +1,7 @@
 import numpy as np
 from matplotlib import colormaps
 
-from src.tools.html_base import CATEGORIES, root
+from src.tools.html_base import CATEGORIES
 from src.tools.db_refresh import *
 
 

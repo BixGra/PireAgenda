@@ -228,7 +228,7 @@ FILTER_DATE = f"""
     </div>
     <div class="filter-item">
         <label for="search"></label>
-        <button class="filter-item-child" id="search" root="." onclick="window.open('/date/01/01', '_self')">Chercher</button>
+        <button class="filter-item-child" id="search" onclick="window.open('/date/01/01', '_self')">Chercher</button>
     </div>
     <script src='/src/script/selector.js"></script>
 </div>"""
