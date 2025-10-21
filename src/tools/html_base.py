@@ -62,8 +62,8 @@ HEADER = f"""
     <title>Pire Agenda</title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="/src/img/divers.png">
-    <link href='/src/style/style.css" media="screen" rel="stylesheet" type="text/css"/>
-    <link href='/src/style/categories.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="/src/style/style.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="/src/style/categories.css" media="screen" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -156,7 +156,7 @@ NO_CARD = f"""
     <div class="card-header">
         <div class="card-title">Pas d'événement à cette date</div>
         <div class="card-header-right">
-            <img class="card-image" src='/src/img/divers.png">
+            <img class="card-image" src="/src/img/divers.png">
             <div class="card-date">
                 <p>{{}}</p>
             </div>
@@ -195,7 +195,7 @@ ALL_CONTAINER = f"""
 
 ALL_ITEM = f"""
 <div class="all-item">
-    <a class="all-link" title="{{}}" href='/events/{{}}">{{}}</a>
+    <a class="all-link" title="{{}}" href="/events/{{}}">{{}}</a>
 </div>
 """
 
@@ -230,7 +230,7 @@ FILTER_DATE = f"""
         <label for="search"></label>
         <button class="filter-item-child" id="search" onclick="window.open('/date/01/01', '_self')">Chercher</button>
     </div>
-    <script src='/src/script/selector.js"></script>
+    <script src="/src/script/selector.js"></script>
 </div>"""
 
 SINGLE_CATEGORY = f"""
@@ -239,7 +239,7 @@ SINGLE_CATEGORY = f"""
         <p>{{}}</p>
     </div>
     <div class="category-right">
-        <img class="category-image" src='/src/img/{{}}.png">
+        <img class="category-image" src="/src/img/{{}}.png">
     </div>
 </div>"""
 
